@@ -1,0 +1,34 @@
+# Wheel-legged 
+
+### 介绍
+达妙科技开源轮足仓，使用4个DM4310 两个DM60轮毂 一个DM-MC02开发板，结构件可以使用3D打印件。
+[达妙文档](https://gl1po2nscb.feishu.cn/wiki/MZ32w0qnnizTpOkNvAZcJ9SlnXb)
+
+[达妙仓库](https://gitee.com/kit-miao/damiao)
+
+### 理论推导
+### 1.整车控制 
+
+https://zhuanlan.zhihu.com/p/563048952
+
+### 安装教程
+
+
+### 开发教程
+#### 1.DM-MC02烧录
+
+[Clion开发stm32](https://zhuanlan.zhihu.com/p/145801160)
+
+[stm32h723 配置](https://www.cnblogs.com/armfly/p/10671095.html)
+
+[Cubemx配置](https://zhuanlan.zhihu.com/p/714301640)
+
+##### 1.1 软件安装
+
+[教程](https://www.cnblogs.com/armfly/p/10671095.html)
+
+
+
+#### 2.DM-MC02控制4310
+
+[开发板控制电机](https://gl1po2nscb.feishu.cn/wiki/VYrlwHI7liHzXIkx0s0cUOVdnzb)
