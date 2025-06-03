@@ -1,8 +1,8 @@
 /**
   *********************************************************************
   * @file      ps2_task.c/h
-  * @brief     ¸ÃÈÎÎñÊÇ¶ÁÈ¡²¢´¦Àíps2ÊÖ±ú´«À´µÄÒ£¿ØÊý¾Ý£¬
-	*            ½«Ò£¿ØÊý¾Ý×ª»¯ÎªÆÚÍûµÄËÙ¶È¡¢ÆÚÍûµÄ×ª½Ç¡¢ÆÚÍûµÄÍÈ³¤µÈ
+  * @brief     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ps2ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½
+	*            ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È³ï¿½ï¿½ï¿½
   * @note       
   * @history
   *
@@ -19,9 +19,9 @@
 
 ps2data_t ps2data;
 
-uint16_t Handkey;	// °´¼üÖµ¶ÁÈ¡£¬ÁãÊ±´æ´¢¡£
-uint8_t Comd[2]={0x01,0x42};	//¿ªÊ¼ÃüÁî¡£ÇëÇóÊý¾Ý
-uint8_t Data[9]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}; //Êý¾Ý´æ´¢Êý×é
+uint16_t Handkey;	// ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½æ´¢ï¿½ï¿½
+uint8_t Comd[2]={0x01,0x42};	//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½î¡£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+uint8_t Data[9]={0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}; //ï¿½ï¿½ï¿½Ý´æ´¢ï¿½ï¿½ï¿½ï¿½
 uint16_t MASK[]={
     PSB_SELECT,
     PSB_L3,
@@ -39,12 +39,12 @@ uint16_t MASK[]={
     PSB_RED,
     PSB_BLUE,
     PSB_PINK
-	};	//°´¼üÖµÓë°´¼üÃû
+	};	//ï¿½ï¿½ï¿½ï¿½Öµï¿½ë°´ï¿½ï¿½ï¿½ï¿½
 
 
 extern chassis_t chassis_move;
 extern INS_t INS;
-uint32_t PS2_TIME=10;//ps2ÊÖ±úÈÎÎñÖÜÆÚÊÇ10ms
+uint32_t PS2_TIME=10;//ps2ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ms
 void pstwo_task(void)
 {		
 	 PS2_SetInit();
@@ -56,13 +56,13 @@ void pstwo_task(void)
 		  PS2_SetInit();
 		 }
 
-	   PS2_data_read(&ps2data);//¶ÁÊý¾Ý
-		 PS2_data_process(&ps2data,&chassis_move,(float)PS2_TIME/1000.0f);//´¦ÀíÊý¾Ý£¬ÉèÖÃÆÚÍûÊý¾Ý
+	   PS2_data_read(&ps2data);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		 PS2_data_process(&ps2data,&chassis_move,(float)PS2_TIME/1000.0f);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	   osDelay(PS2_TIME);
 	 }
 }
 
-//ÏòÊÖ±ú·¢ËÍÃüÁî
+//ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void PS2_Cmd(uint8_t CMD)
 {
 	volatile uint16_t ref=0x01;
@@ -71,11 +71,11 @@ void PS2_Cmd(uint8_t CMD)
 	{
 		if(ref&CMD)
 		{
-			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET);                   //Êä³öÒ»Î»¿ØÖÆÎ» DO_H;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_SET);                   //ï¿½ï¿½ï¿½Ò»Î»ï¿½ï¿½ï¿½ï¿½Î» DO_H;
 		}
 		else HAL_GPIO_WritePin(GPIOA, GPIO_PIN_2, GPIO_PIN_RESET);//DO_L
 
-		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET);                        //Ê±ÖÓÀ­¸ß
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_SET);                        //Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		DWT_Delay(0.000005f);
 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_13, GPIO_PIN_RESET);
 		DWT_Delay(0.000005f);
@@ -90,26 +90,26 @@ void PS2_Cmd(uint8_t CMD)
 Function: Read the control of the ps2 handle
 Input   : none
 Output  : none
-º¯Êý¹¦ÄÜ£º¶ÁÈ¡PS2ÊÖ±úµÄ¿ØÖÆÁ¿
-Èë¿Ú²ÎÊý£ºÎÞ
-·µ»Ø  Öµ£ºÎÞ
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½È¡PS2ï¿½Ö±ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½  Öµï¿½ï¿½ï¿½ï¿½
 **************************************************************************/	
 uint8_t reve_flag=0;
 void PS2_data_read(ps2data_t *data)
 {
-  //¶ÁÈ¡°´¼ü¼üÖµ
-	data->key=PS2_DataKey(); //¶ÁÈ¡°´¼ü¼üÖµ
+  //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
+	data->key=PS2_DataKey(); //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
 
-  //¶ÁÈ¡×ó±ßÒ£¸ÐXÖá·½ÏòµÄÄ£ÄâÁ¿	
+  //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ò£ï¿½ï¿½Xï¿½á·½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½	
 	data->lx=PS2_AnologData(PSS_LX); 
 
-  //¶ÁÈ¡×ó±ßÒ£¸ÐYÖá·½ÏòµÄÄ£ÄâÁ¿	
+  //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ò£ï¿½ï¿½Yï¿½á·½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½	
 	data->ly=PS2_AnologData(PSS_LY);
 
-  //¶ÁÈ¡ÓÒ±ßÒ£¸ÐXÖá·½ÏòµÄÄ£ÄâÁ¿  
+  //ï¿½ï¿½È¡ï¿½Ò±ï¿½Ò£ï¿½ï¿½Xï¿½á·½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½  
 	data->rx=PS2_AnologData(PSS_RX);
 
-  //¶ÁÈ¡ÓÒ±ßÒ£¸ÐYÖá·½ÏòµÄÄ£ÄâÁ¿  
+  //ï¿½ï¿½È¡ï¿½Ò±ï¿½Ò£ï¿½ï¿½Yï¿½á·½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½  
 	data->ry=PS2_AnologData(PSS_RY);
 
 	if((data->ry<=255&&data->ry>192)||(data->ry<64&&data->ry>=0))
@@ -128,18 +128,18 @@ void PS2_data_process(ps2data_t *data,chassis_t *chassis,float dt)
 {   
 	if(data->last_key!=4&&data->key==4&&chassis->start_flag==0) 
 	{
-		//ÊÖ±úÉÏµÄStart°´¼ü±»°´ÏÂ
+		//ï¿½Ö±ï¿½ï¿½Ïµï¿½Startï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		chassis->start_flag=1;
 		if(chassis->recover_flag==0
 			&&((chassis->myPithR<((-3.1415926f)/4.0f)&&chassis->myPithR>((-3.1415926f)/2.0f))
 		  ||(chassis->myPithR>(3.1415926f/4.0f)&&chassis->myPithR<(3.1415926f/2.0f))))
 		{
-		  chassis->recover_flag=1;//ÐèÒª×ÔÆð
+		  chassis->recover_flag=1;//ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
 		}
 	}
 	else if(data->last_key!=4&&data->key==4&&chassis->start_flag==1) 
 	{
-		//ÊÖ±úÉÏµÄStart°´¼ü±»°´ÏÂ
+		//ï¿½Ö±ï¿½ï¿½Ïµï¿½Startï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		chassis->start_flag=0;
 		chassis->recover_flag=0;
 	}
@@ -147,33 +147,33 @@ void PS2_data_process(ps2data_t *data,chassis_t *chassis,float dt)
 	data->last_key=data->key;
   
 	if(chassis->start_flag==1)
-	{//Æô¶¯
-		chassis->v_set=((float)(data->ry-128))*(-0.005f);//ÍùÇ°´óÓÚ0
+	{//ï¿½ï¿½ï¿½ï¿½
+		chassis->v_set=((float)(data->ry-128))*(-0.005f);//ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½0
 		chassis->x_set=chassis->x_set+chassis->v_set*dt;
-		chassis->turn_set=chassis->turn_set+(data->rx-127)*(-0.0002f);//ÍùÓÒ´óÓÚ0
+		chassis->turn_set=chassis->turn_set+(data->rx-127)*(-0.0002f);//ï¿½ï¿½ï¿½Ò´ï¿½ï¿½ï¿½0
 	  	
-		//roll½Ç±ä»¯
+		//rollï¿½Ç±ä»¯
 		chassis->roll_set=chassis->roll_set+((float)(data->lx-127))*0.00007f;
 		mySaturate(&chassis->roll_set,-0.40f,0.40f);	
 		
-		//ÍÈ³¤±ä»¯
+		//ï¿½È³ï¿½ï¿½ä»¯
 		chassis->leg_set=chassis->leg_set+((float)(data->ly-128))*(-0.000015f); 
-		mySaturate(&chassis->leg_set,0.065f,0.18f);//ÍÈ³¤ÏÞ·ùÔÚ0.065mµ½0.18mÖ®¼ä
+		mySaturate(&chassis->leg_set,0.065f,0.18f);//ï¿½È³ï¿½ï¿½Þ·ï¿½ï¿½ï¿½0.065mï¿½ï¿½0.18mÖ®ï¿½ï¿½
 		
 				
 		if(fabsf(chassis->last_leg_set-chassis->leg_set)>0.0001f)
-		{//Ò£¿ØÆ÷¿ØÖÆÍÈ³¤ÔÚ±ä»¯
-			right.leg_flag=1;	//Îª1±êÖ¾×ÅÍÈ³¤ÔÚÖ÷¶¯ÉìËõ(²»°üÀ¨×ÔÊÊÓ¦ÉìËõ)£¬¸ù¾ÝÕâ¸ö±êÖ¾¿ÉÒÔ²»½øÐÐÀëµØ¼ì²â£¬ÒòÎªµ±ÍÈ³¤ÔÚÖ÷¶¯ÉìËõÊ±£¬ÀëµØ¼ì²â»áÎóÅÐ¶ËÎªÀëµØÁË
+		{//Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È³ï¿½ï¿½Ú±ä»¯
+			right.leg_flag=1;	//Îª1ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½â£¬ï¿½ï¿½Îªï¿½ï¿½ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½
       left.leg_flag=1;	 			
 		}
 		chassis->last_leg_set=chassis->leg_set;
 	} 
 	else if(chassis->start_flag==0)
-	{//¹Ø±Õ
-	  chassis->v_set=0.0f;//ÇåÁã
-		chassis->x_set=chassis->x_filter;//±£´æ
-	  chassis->turn_set=chassis->total_yaw;//±£´æ
-	  chassis->leg_set=0.08f;//Ô­Ê¼ÍÈ³¤
+	{//ï¿½Ø±ï¿½
+	  chassis->v_set=0.0f;//ï¿½ï¿½ï¿½ï¿½
+		chassis->x_set=chassis->x_filter;//ï¿½ï¿½ï¿½ï¿½
+	  chassis->turn_set=chassis->total_yaw;//ï¿½ï¿½ï¿½ï¿½
+	  chassis->leg_set=0.08f;//Ô­Ê¼ï¿½È³ï¿½
 	  chassis->roll_set=0.0f; 
 	}
 	
@@ -187,28 +187,28 @@ void PS2_data_process(ps2data_t *data,chassis_t *chassis,float dt)
 
 
 
-//ÅÐ¶ÏÊÇ·ñÎªºìµÆÄ£Ê½,0x41=Ä£ÄâÂÌµÆ£¬0x73=Ä£ÄâºìµÆ
-//·µ»ØÖµ£»0£¬ºìµÆÄ£Ê½
-//		  ÆäËû£¬ÆäËûÄ£Ê½
+//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½Ä£Ê½,0x41=Ä£ï¿½ï¿½ï¿½ÌµÆ£ï¿½0x73=Ä£ï¿½ï¿½ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+//		  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
 uint8_t PS2_RedLight(void)
 {
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);
-	PS2_Cmd(Comd[0]);  //¿ªÊ¼ÃüÁî
-	PS2_Cmd(Comd[1]);  //ÇëÇóÊý¾Ý
+	PS2_Cmd(Comd[0]);  //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+	PS2_Cmd(Comd[1]);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);
 	if( Data[1] == 0X73)   return 0 ;
 	else return 1;
 
 }
-//¶ÁÈ¡ÊÖ±úÊý¾Ý
+//ï¿½ï¿½È¡ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½
 void PS2_ReadData(void)
 {
 	volatile uint8_t byte=0;
 	volatile uint16_t ref=0x01;
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);//CS_L
-	PS2_Cmd(Comd[0]);  //¿ªÊ¼ÃüÁî
-	PS2_Cmd(Comd[1]);  //ÇëÇóÊý¾Ý
-	for(byte=2;byte<9;byte++)          //¿ªÊ¼½ÓÊÜÊý¾Ý
+	PS2_Cmd(Comd[0]);  //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+	PS2_Cmd(Comd[1]);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	for(byte=2;byte<9;byte++)          //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		for(ref=0x01;ref<0x100;ref<<=1)
 		{
@@ -225,8 +225,8 @@ void PS2_ReadData(void)
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);//CS_H
 }
 
-//¶Ô¶Á³öÀ´µÄPS2µÄÊý¾Ý½øÐÐ´¦Àí,Ö»´¦Àí°´¼ü²¿·Ö  
-//Ö»ÓÐÒ»¸ö°´¼ü°´ÏÂÊ±°´ÏÂÎª0£¬ Î´°´ÏÂÎª1
+//ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PS2ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½,Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
+//Ö»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ Î´ï¿½ï¿½ï¿½ï¿½Îª1
 uint8_t PS2_DataKey()
 {
 	uint8_t index;
@@ -234,22 +234,22 @@ uint8_t PS2_DataKey()
 	PS2_ClearData();
 	PS2_ReadData();
 
-	Handkey=(Data[4]<<8)|Data[3];     //ÕâÊÇ16¸ö°´¼ü  °´ÏÂÎª0£¬ Î´°´ÏÂÎª1
+	Handkey=(Data[4]<<8)|Data[3];     //ï¿½ï¿½ï¿½ï¿½16ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ Î´ï¿½ï¿½ï¿½ï¿½Îª1
 	for(index=0;index<16;index++)
 	{	    
 		if((Handkey&(1<<(MASK[index]-1)))==0)
 		return index+1;
 	}
-	return 0;          //Ã»ÓÐÈÎºÎ°´¼ü°´ÏÂ
+	return 0;          //Ã»ï¿½ï¿½ï¿½ÎºÎ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
-//µÃµ½Ò»¸öÒ¡¸ËµÄÄ£ÄâÁ¿	 ·¶Î§0~256
+//ï¿½Ãµï¿½Ò»ï¿½ï¿½Ò¡ï¿½Ëµï¿½Ä£ï¿½ï¿½ï¿½ï¿½	 ï¿½ï¿½Î§0~256
 uint8_t PS2_AnologData(uint8_t button)
 {
 	return Data[button];
 }
 
-//Çå³ýÊý¾Ý»º³åÇø
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½ï¿½ï¿½
 void PS2_ClearData()
 {
 	uint8_t a;
@@ -258,17 +258,17 @@ void PS2_ClearData()
 }
 /******************************************************
 Function:    void PS2_Vibration(u8 motor1, u8 motor2)
-Description: ÊÖ±úÕð¶¯º¯Êý£¬
+Description: ï¿½Ö±ï¿½ï¿½ð¶¯ºï¿½ï¿½ï¿½ï¿½ï¿½
 Calls:		 void PS2_Cmd(u8 CMD);
-Input: motor1:ÓÒ²àÐ¡Õð¶¯µç»ú 0x00¹Ø£¬ÆäËû¿ª
-	   motor2:×ó²à´óÕð¶¯µç»ú 0x40~0xFF µç»ú¿ª£¬ÖµÔ½´ó Õð¶¯Ô½´ó
+Input: motor1:ï¿½Ò²ï¿½Ð¡ï¿½ð¶¯µï¿½ï¿½ 0x00ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	   motor2:ï¿½ï¿½ï¿½ï¿½ï¿½ð¶¯µï¿½ï¿½ 0x40~0xFF ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÔ½ï¿½ï¿½ ï¿½ï¿½Ô½ï¿½ï¿½
 ******************************************************/
 void PS2_Vibration(uint8_t motor1, uint8_t motor2)
 {
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);//CS_L
 	DWT_Delay(0.000016f); 
-  PS2_Cmd(0x01);  //¿ªÊ¼ÃüÁî
-	PS2_Cmd(0x42);  //ÇëÇóÊý¾Ý
+  PS2_Cmd(0x01);  //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+	PS2_Cmd(0x42);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	PS2_Cmd(0X00);
 	PS2_Cmd(motor1);
 	PS2_Cmd(motor2);
@@ -294,7 +294,7 @@ void PS2_ShortPoll(void)
 	DWT_Delay(0.000016f); 	
 }
 
-//½øÈëÅäÖÃ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void PS2_EnterConfing(void)
 {
   HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);//CS_L
@@ -311,16 +311,16 @@ void PS2_EnterConfing(void)
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);//CS_H
 	DWT_Delay(0.000016f); 
 }
-//·¢ËÍÄ£Ê½ÉèÖÃ
+//ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
 void PS2_TurnOnAnalogMode(void)
 {
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);//CS_L
 	PS2_Cmd(0x01);  
 	PS2_Cmd(0x44);  
 	PS2_Cmd(0X00);
-	PS2_Cmd(0x01); //analog=0x01;digital=0x00  Èí¼þÉèÖÃ·¢ËÍÄ£Ê½
-	PS2_Cmd(0x03); //Ox03Ëø´æÉèÖÃ£¬¼´²»¿ÉÍ¨¹ý°´¼ü¡°MODE¡±ÉèÖÃÄ£Ê½¡£
-				   //0xEE²»Ëø´æÈí¼þÉèÖÃ£¬¿ÉÍ¨¹ý°´¼ü¡°MODE¡±ÉèÖÃÄ£Ê½¡£
+	PS2_Cmd(0x01); //analog=0x01;digital=0x00  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½Ä£Ê½
+	PS2_Cmd(0x03); //Ox03ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MODEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½
+				   //0xEEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MODEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½
 	PS2_Cmd(0X00);
 	PS2_Cmd(0X00);
 	PS2_Cmd(0X00);
@@ -328,7 +328,7 @@ void PS2_TurnOnAnalogMode(void)
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);//CS_H
 	DWT_Delay(0.000016f); 
 }
-//Õñ¶¯ÉèÖÃ
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void PS2_VibrationMode(void)
 {
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);//CS_L
@@ -341,7 +341,7 @@ void PS2_VibrationMode(void)
 	HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_SET);//CS_H
 	DWT_Delay(0.000016f); 
 }
-//Íê³É²¢±£´æÅäÖÃ
+//ï¿½ï¿½É²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void PS2_ExitConfing(void)
 {
   HAL_GPIO_WritePin(GPIOE, GPIO_PIN_9, GPIO_PIN_RESET);//CS_L
@@ -359,16 +359,16 @@ void PS2_ExitConfing(void)
 	DWT_Delay(0.000016f); 
 }
 
-//ÊÖ±úÅäÖÃ³õÊ¼»¯
+//ï¿½Ö±ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Ê¼ï¿½ï¿½
 void PS2_SetInit(void)
 {
 	PS2_ShortPoll();
 	PS2_ShortPoll();
 	PS2_ShortPoll();
-	PS2_EnterConfing();		//½øÈëÅäÖÃÄ£Ê½
-	PS2_TurnOnAnalogMode();	//¡°ºìÂÌµÆ¡±ÅäÖÃÄ£Ê½£¬²¢Ñ¡ÔñÊÇ·ñ±£´æ
-	//PS2_VibrationMode();	//¿ªÆôÕð¶¯Ä£Ê½
-	PS2_ExitConfing();		//Íê³É²¢±£´æÅäÖÃ
+	PS2_EnterConfing();		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+	PS2_TurnOnAnalogMode();	//ï¿½ï¿½ï¿½ï¿½ï¿½ÌµÆ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ç·ñ±£´ï¿½
+	//PS2_VibrationMode();	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+	PS2_ExitConfing();		//ï¿½ï¿½É²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 
