@@ -38,9 +38,9 @@
 
 打开调试助手，将电机的位置调整至下图所示的零点位置，发送z将当前状态设置为零点
 
-<img src="./README.assets/35fd413e3723d0d80d382fd0ca288a9a.jpg" alt="35fd413e3723d0d80d382fd0ca288a9a" style="zoom:33%;" />
+<img src="./README.assets/35fd413e3723d0d80d382fd0ca288a9a.jpg" alt="35fd413e3723d0d80d382fd0ca288a9a" style="zoom: 25%;" />
 
-<img src="./README.assets/image-20250526190837904.png" alt="image-20250526190837904" style="zoom:33%;" />
+<img src="./README.assets/image-20250526190837904.png" alt="image-20250526190837904" style="zoom: 25%;" />
 
 
 
@@ -52,9 +52,7 @@
 
 2. 软件下载：
 
-Keil MDK 5用于创建项目和编写代码，编译出HEX文件。
-
-编译器报错时，修改下optiions for target中的编译器即可。
+Keil MDK 5用于创建项目和编写代码，编译出HEX文件（编译器报错时，修改下options for target中的编译器即可）
 
 STM32CubeProgrammer用于连接和烧录程序，把HEX文件烧录到STM32单片机（注意此时要么用vcc供电，要么用24V电源供电）
 
@@ -88,7 +86,7 @@ GND -> SBUS GND
 
 <img src="./README.assets/e7bcbcc47b88743a402a85133718ca15.jpg" alt="e7bcbcc47b88743a402a85133718ca15" style="zoom: 25%;" />
 
-<img src="./README.assets/H7_管脚标注图.png" alt="Image text" style="zoom: 50%;" />
+<img src="./README.assets/H7_管脚标注图.png" alt="Image text" style="zoom: 25%;" />
 
 <img src="./README.assets/bde10053c7e34d06ff5cbc1dab6828bd.jpg" alt="bde10053c7e34d06ff5cbc1dab6828bd" style="zoom: 25%;" />
 
@@ -96,7 +94,7 @@ GND -> SBUS GND
 
 整车连接示意图：
 
-![a19986df63b5a0b379cda55597644f95](./README.assets/a19986df63b5a0b379cda55597644f95.jpg)
+<img src="./README.assets/a19986df63b5a0b379cda55597644f95-1748937648128-2.jpg" alt="a19986df63b5a0b379cda55597644f95" style="zoom: 25%;" />
 
 
 
@@ -752,4 +750,23 @@ void fdcan1_rx_callback(void)
 
 
 
-#### 达妙
+#### 手柄控制
+1. 启动/停止：
+
+按下start以启动
+
+2. 运动控制：
+
+右摇杆RY轴控制前进、后退速度；RX控制转向
+
+3. 姿态控制：
+
+左摇杆LX轴控制左右倾斜(roll角度)；LY控制腿长
+
+4. 其他：
+
+按下手柄的SELECT键可以将roll角度归零
+
+
+
+
