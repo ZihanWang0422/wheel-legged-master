@@ -11,6 +11,8 @@
 
 [Clion开发stm32](https://zhuanlan.zhihu.com/p/145801160)
 
+[Wheel-legged : 达妙科技开源轮足仓](https://gitee.com/kit-miao/wheel-legged)
+
 
 
 ### 理论推导
@@ -26,7 +28,11 @@
 
 修改了下轮毂打印件的尺寸
 
+🚧待打印部件：
 
+| DINGBAN |  1   |
+| :-----: | :--: |
+| DINGGAI |  1   |
 
 
 
@@ -751,22 +757,28 @@ void fdcan1_rx_callback(void)
 
 
 #### 手柄控制
+
+![ps2手柄 的图像结果](./README.assets/OIP.N7Fs2CV0O6BBWgfwNq61zgHaEKw=316&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.webp)
+
 1. 启动/停止：
 
-按下start以启动
+按下start以启动(⚠️注意：由于锂电池过重，启动时需要人手扶)
 
 2. 运动控制：
 
-右摇杆RY轴控制前进、后退速度；RX控制转向
+向上推动左侧的摇杆，启动轮足，可以进入静止平衡状态。
+
+向上推动右侧摇杆，轮足前进；向下推动左侧摇杆，轮足后退。
+
+向左推动右侧摇杆，轮足逆时针旋转；向右推动右侧摇杆，轮足顺时针旋转。
 
 3. 姿态控制：
 
-左摇杆LX轴控制左右倾斜(roll角度)；LY控制腿长
+🚧打印件版腿暂时无法实现，机加工版程序可以实现
 
 4. 其他：
 
 按下手柄的SELECT键可以将roll角度归零
-
 
 
 
